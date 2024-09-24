@@ -20,6 +20,7 @@ class _LotteryAppState extends State<LotteryApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
@@ -30,7 +31,7 @@ class _LotteryAppState extends State<LotteryApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(child: Text('Lottery winning number is $x')),
+            Center(child: Text('Lottery winning number is 4')),
             SizedBox(
               height: 25,
             ),
@@ -42,7 +43,26 @@ class _LotteryAppState extends State<LotteryApp> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Column(
+                  child:x==4?
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.done_outline,
+                        size: 35,
+                        color: Colors.green,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Congratulations Bro, You won the lottery \nyour number is $x',
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ):
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -55,7 +75,7 @@ class _LotteryAppState extends State<LotteryApp> {
                         height: 15,
                       ),
                       Text(
-                        'Better Luck for next time, \nyour number is 4 try again',
+                        'Better Luck for next time, \nyour number is $x try again',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -66,7 +86,7 @@ class _LotteryAppState extends State<LotteryApp> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             // print(random.nextInt(10).toString());
-            x = random.nextInt(100);
+            x = random.nextInt(6);
             print(x);
             setState(() {
 
